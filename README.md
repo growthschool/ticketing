@@ -1,8 +1,13 @@
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+### Style Guides
+
+* [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
+* [Rails Style Guide](https://github.com/bbatsov/rails-style-guide)
+* [Better Specs](http://betterspecs.org/)
+* [Rails Best Practices](http://rails-bestpractices.com/)
+
+
 
 # Ruby version
 
@@ -30,8 +35,3 @@ rake dev:build
 
 *  figaro heroku:set -e production
 
-Then override each setting
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
