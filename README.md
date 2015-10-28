@@ -19,7 +19,7 @@ ruby "2.1.2"
 
 ### Configuration
 
-* [figaro]https://github.com/laserlemon/figaro)
+* [figaro](https://github.com/laserlemon/figaro)
 
 ### Database creation
 
