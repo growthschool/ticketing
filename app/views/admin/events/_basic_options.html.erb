@@ -1,0 +1,13 @@
+<h4> 活動資訊 </h4>
+
+<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+   <%= active_link_to("訂單", admin_event_registrations_path(event) , :wrap_tag => :li) %>  
+   <%= active_link_to("報名列表", admin_event_tickets_path(event) , :wrap_tag => :li) %>
+</ul>
+
+<h4> 活動設定 </h4>
+
+<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+   <%= active_link_to("基本資料", info_admin_event_path(event) , :wrap_tag => :li) %>
+   <%= active_link_to("票種資訊", admin_event_ticket_types_path(event) , :wrap_tag => :li) %>
+</ul>

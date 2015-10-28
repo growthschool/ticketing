@@ -1,0 +1,73 @@
+<h2> Event List </h2>
+
+<div class="pull-right btn-group" style="padding-bottom: 20px;">
+  <%= link_to("新增活動", new_admin_event_path, :class => "btn btn-primary btn-default btn-sm") %>
+
+
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th width="">Name</th>
+     <th>總開放數量</th> 
+      <th>尚未結帳，但未過期 </th>
+      <th>尚未結帳，但已過期 </th>
+      <th>確定結帳，但未過期</th>
+      <th>確定結帳，但已過期</th>
+
+      <th>已結帳數量</th> 
+       <th>可購買數量</th> 
+        <th>Options</th> 
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @events.each do |event| %>
+      <tr>
+        <td>
+          <%= event.id %>
+        </td>
+        <td>
+          <%= link_to(event.name, admin_event_path(event)) %>
+        </td>
+        <td>
+          <%= event.seat_quantity %>
+        </td>
+
+        <td>
+          <%= event.not_placed_and_not_expired_tickets_count %>
+        </td>
+
+        <td>
+          <%= event.not_placed_and_expired_tickets_count %>
+        </td>
+ 
+        <td>
+          <%= event.still_can_pay_tickets_count %>
+        </td>
+
+        <td>
+          <%= event.cant_paid_tickets_count %>
+        </td>
+
+       <td>
+          <%= event.paid_tickets_count %>
+        </td>
+
+
+       <td>
+          <%= event.available_seat %>
+        </td>
+
+        <td>
+          <%= link_to("Manage", admin_event_path(event)) %>
+          |
+          <%= link_to("Edit", edit_admin_event_path(event)) %>
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>

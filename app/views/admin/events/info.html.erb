@@ -1,0 +1,15 @@
+<%= render :partial => "admin/events/top_bar", :locals => { :event => @event } %>
+
+
+
+<%= render :partial => "admin/events/basic_info", :locals => { :event => @event } %>
+
+
+<%= content_for :admin_special_area_top do  %>
+  <%= render :partial => "admin/events/publish_options", :locals => { :event => @event } %>
+<% end %>
+
+
+<%= content_for :admin_special_area_bottom do  %>
+  <%= render :partial => "admin/events/basic_options", :locals => { :event => @event } %>
+<% end %>

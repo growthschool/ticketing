@@ -1,0 +1,126 @@
+
+
+<h2> <%= @event.name %> </h2>
+
+
+<%= render :partial => "admin/events/basic_info", :locals => { :event => @event } %>
+
+<div class="pull-right btn-group" style="padding-bottom: 20px;">
+  <%= link_to("新增票種", new_admin_event_ticket_type_path(@event) , :class => "btn btn-default btn-primary btn-sm") %>
+
+</div>
+
+<h3>票種銷售狀況 </h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th >票種</th>
+      <th >販售時間</th>
+      <th >狀態</th>
+      <th >價格</th>
+      <th >數量</th>
+      <th >單次可購</th> 
+      <th >還可購數量</th> 
+
+      <th>未結帳<br>(未過期) </th>
+      <th>未結帳<br>(已過期) </th>
+      <th>進行結帳<br>(未過期)</th>
+      <th>進行結帳<br>(已過期)</th>
+      <th>已結帳數量</th> 
+      <th width="100"> Options</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @ticket_types.each do |ticket_type| %>
+      <tr>
+        <td>
+          <%= ticket_type.name %>
+        </td>
+
+        <td>
+          販售時間 TBD
+        </td>
+        <td>
+          狀態 TBD
+        </td>
+        <td>
+          <%= ticket_type.price %>
+        </td>
+
+        <td>
+          <%= ticket_type.amount %>
+        </td>
+        <td>
+          <%= ticket_type.allow_single_purchase_amount %>
+        </td>
+
+        <td><%= ticket_type.available_amount %></td>
+        <td>
+          <%= ticket_type.not_placed_and_not_expired_tickets_count %>
+        </td>
+
+        <td>
+          <%= ticket_type.not_placed_and_expired_tickets_count %>
+        </td>
+ 
+        <td>
+          <%= ticket_type.still_can_pay_tickets_count %>
+        </td>
+
+        <td>
+          <%= ticket_type.cant_paid_tickets_count %>
+        </td>
+
+       <td>
+          <%= ticket_type.paid_tickets_count %>
+        </td>
+        <td>
+          <%= link_to("管理", edit_admin_event_ticket_type_path(@event,ticket_type)) %>
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+<h3> 最近訂單 </h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th >訂單編號</th>
+      <th >聯絡人姓名</th>
+      <th >聯絡人Email</th>
+      <th >聯絡人電話</th>
+      <th >票數</th>
+      <th >金額</th> 
+      <th width="100"> Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @registrations.each do |registration|  %>
+
+    <tr>
+      <td> <%= registration.trade_number %> </td>
+      <td> <%= registration.name %> </td>
+      <td> <%= registration.email %> </td>
+      <td> <%= registration.cell_phone %> </td>
+      <td> <%= registration.tickets_count %> </td>
+      <td> <%= registration.total_price %> </td>
+      <td> <%= link_to("明細", admin_event_registration_path(@event,registration.token), :class => "btn btn-default btn-sm") %>
+    </tr>
+
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= content_for :admin_special_area_top do  %>
+  <%= render :partial => "admin/events/publish_options", :locals => { :event => @event } %>
+<% end %>
+
+
+<%= content_for :admin_special_area_bottom do  %>
+  <%= render :partial => "admin/events/basic_options", :locals => { :event => @event } %>
+<% end %>

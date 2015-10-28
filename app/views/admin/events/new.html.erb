@@ -1,0 +1,26 @@
+<h2> 新增活動 </h2>
+
+<%= simple_form_for [:admin, @event] do |f| %>
+
+  <%= render "#{@event.current_step}_step", :f => f %>
+
+
+<div class="row">
+
+  <div class="btn-group">
+
+     <%= f.submit "上一步", :name => "back_button", :class => "btn btn-default" unless @event.first_step? %>
+
+     <% if @event.last_step? %>
+        <%= f.submit "送出", :class => "btn btn-default btn-primary" %>
+     <% else %>
+        <%= f.submit "下一步", :class => "btn btn-default" %>
+     <% end %>
+ 
+  </div>
+</div>
+
+
+
+
+<% end %>

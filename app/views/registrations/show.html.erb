@@ -1,0 +1,50 @@
+
+
+
+<h2> <%= @event.name %> </h2>
+
+<br>
+
+
+
+
+
+
+<div class="stepwizard clearfix">
+    <div class="stepwizard-row">
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default  btn-circle">1</button>
+            <p>選擇票種</p>
+        </div>
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default  btn-circle" disabled="disabled">2</button>
+            <p>填寫表單</p>
+        </div>
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default btn-circle" disabled="disabled">3</button>
+            <p>進行繳費</p>
+        </div> 
+
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-primary btn-circle" disabled="disabled">4</button>
+            <p>取得票卷</p>
+        </div> 
+
+    </div>
+</div>
+
+
+<%= render :partial => "registrations/event_basic_info" %>
+
+
+<%= render :partial => "registrations/registration_summary", :local => { :registration => @registration} %>
+
+
+<br><br><br><br><br><br><br>
+<% if @registration.is_paid? %>
+  <p class="text-center">此訂單已完成付款</p>
+<% else %>
+  <p class="text-center">此訂單還未完成付款，請 <%= link_to("進行付款", payinfo_event_registration_path(@event,@registration.token)) %></p>
+<% end %>
+
+

@@ -1,0 +1,79 @@
+<h2> <%= @event.name %> </h2>
+
+<br>
+
+<div class="stepwizard">
+    <div class="stepwizard-row">
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-primary btn-circle">1</button>
+            <p>選擇票種</p>
+        </div>
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default btn-circle" disabled="disabled">2</button>
+            <p>填寫表單</p>
+        </div>
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default btn-circle" disabled="disabled">3</button>
+            <p>進行繳費</p>
+        </div> 
+
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default btn-circle" disabled="disabled">4</button>
+            <p>取得票卷</p>
+        </div> 
+
+
+    </div>
+</div>
+
+<h3> 選擇票種 </h3>
+
+<%= form_for [@event, @registration] do |f| %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th width="">票種</th>
+      <th width="200">票價</th>
+
+       <th width="200"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+ 
+      <% @ticket_types.each do |ticket_type| %>
+        <tr>
+          <td>
+            <%= ticket_type.name %>
+          </td>
+          <td>
+            <%= ticket_type.price %>
+          </td>
+  
+
+          <td>
+             <%= select_tag "tickets[#{ticket_type.id}]", options_for_select(ticket_type.available_amount_range) %>
+          </td>
+        </tr>
+      <% end %>
+
+
+
+
+
+  </tbody>
+</table>
+
+
+<center>
+
+  <%= f.check_box :human_agree_term, :as => :boolean, :label => false %> 我已經閱讀並同意 <%= link_to("隱私權政策", "/pages/privacy", :target => "_blank") %>
+
+<br><br>
+  <%= f.submit("送出", :class => "btn btn-primary", data: { disable_with: "Submitting..." }) %>
+ 
+</center>  
+
+    <% end %>

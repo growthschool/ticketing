@@ -1,0 +1,13 @@
+<% if @event.ticket_types.blank? %>
+  <% @ticket_types = @event.ticket_types.new %>
+<% end %>
+
+<%= f.simple_fields_for :ticket_types do |builder| %>
+  <%= render "ticket_type_fields", :f => builder %>
+  <%= link_to_add_association '新增票種', f, :ticket_types %>
+  <br><br>
+<% end %>
+
+
+
+

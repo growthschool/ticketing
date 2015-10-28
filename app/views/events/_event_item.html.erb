@@ -1,0 +1,6 @@
+<% events.each do |event| %>
+  <div class="col-xs-6 col-md-3">
+
+    <%= link_to(event.name, event_path(event)) %> 座位數量： <%= event.seat_quantity %>
+  </div>
+<% end %>

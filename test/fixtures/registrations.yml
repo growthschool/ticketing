@@ -1,0 +1,40 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value
+
+# == Schema Information
+#
+# Table name: registrations
+#
+#  id             :integer          not null, primary key
+#  event_id       :integer
+#  token          :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  name           :string
+#  email          :string
+#  cell_phone     :string
+#  total_price    :integer
+#  payment_method :string
+#  paid_at        :datetime
+#  tickets_count  :integer          default(0)
+#  expired_at     :datetime
+#  should_paid_at :datetime
+#  canceled_at    :datetime
+#  trade_number   :string
+#  bank_code      :string
+#  bank_no        :string
+#  agree_term_at  :datetime
+#
+# Indexes
+#
+#  index_registrations_on_trade_number  (trade_number)
+#

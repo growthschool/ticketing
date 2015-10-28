@@ -1,0 +1,20 @@
+<%= form_tag Pay2go.service_url , :method => :post do  %>
+  <%= text_field_tag "MerchantID", Pay2go.merchant_id, :style => 'display:none'  %>
+  <%= text_field_tag "HashKey", Pay2go.hash_key, :style => 'display:none' %>
+  <%= text_field_tag "HashIV", Pay2go.hash_iv, :style => 'display:none' %>
+  <%= text_field_tag "LoginType", "0", :style => 'display:none' %>
+  <%= text_field_tag "RespondType", "JSON", :style => 'display:none' %>
+  <%= text_field_tag "Version", "1.1", :style => 'display:none' %>
+
+  <%= text_field_tag "ItemDesc", @registration.event.name , :style => 'display:none' %>
+  <%= text_field_tag "MerchantOrderNo", @registration.order_number, :style => 'display:none' %>
+  <%= text_field_tag "TimeStamp", @registration.created_at.to_i , :style => 'display:none' %>
+  <%= text_field_tag "Amt", @registration.total_price, :style => 'display:none' %>
+  
+  <%= text_field_tag "CREDIT", "1" , :style => 'display:none' %>
+  <%= text_field_tag "ReturnURL", pay2go_cc_notify_order_url(@registration.token) , :style => 'display:none' %>
+  <%= text_field_tag "CustomerURL", "http://requestb.in/1h49l6g1", :style => 'display:none' %>
+  <%= text_field_tag "CheckValue", Pay2goService.new(@registration).check_value , :style => 'display:none' %>
+
+  <%= submit_tag "使用信用卡付款", :class => "btn btn-danger btn-lg btn-default" %>
+<% end %>

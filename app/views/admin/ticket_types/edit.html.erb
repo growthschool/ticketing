@@ -1,0 +1,36 @@
+
+<%= render :partial => "admin/events/top_bar", :locals => { :event => @event } %>
+
+<h3> 管理票種：<%= @ticket_type.name %> </h3>
+
+<%= simple_form_for [:admin, @event, @ticket_type] do |f| %>
+
+  <div class="group">
+    <%= f.input :name, :label => "票種名稱" %>
+  </div>
+
+  <div class="group">
+    <%= f.input :price, :label => "價格" %>
+  </div>
+
+
+  <div class="group">
+    <%= f.input :amount, :label => "數量" %>
+  </div>
+
+  <div class="group">
+    <%= f.input :allow_single_purchase_amount, :label => "單次可購數量" %>
+  </div>
+
+  <%= f.submit "Submit", data: { disable_with: "Submitting..." }, :class => "btn btn-primary" %>
+
+<% end %>
+
+<%= content_for :admin_special_area_top do  %>
+  <%= render :partial => "admin/events/publish_options", :locals => { :event => @event } %>
+<% end %>
+
+
+<%= content_for :admin_special_area_bottom do  %>
+  <%= render :partial => "admin/events/basic_options", :locals => { :event => @event } %>
+<% end %>

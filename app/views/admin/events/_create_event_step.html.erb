@@ -1,0 +1,38 @@
+<div class="group">
+    <%= f.input :name, :label => "活動名稱" %>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <%= f.input :human_started_at , :as => :string, :label => "活動開始時間" %>
+  </div>
+
+  <div class="col-md-3">
+    <%= f.input :human_end_at,  :as => :string, :label => "活動結束時間" %>
+  </div>
+
+</div>
+
+  <div class="group">
+    <%= f.input :seat_quantity, :label => "活動人數" %>
+  </div>
+
+  <div class="group">
+    <%= f.input :location_name, :label => "活動地點" %>
+  </div>
+
+
+  <div class="group">
+    <%= f.input :location_address, :label => "活動地址" %>
+  </div>
+
+
+  <div class="group">
+    <br>
+    !!!活動 og description # TBD
+    <br><br>
+  </div>
+  <div class="group">
+    <%= f.input :description, :label => "描述 ( Editor TBD )" %>
+  </div>
+

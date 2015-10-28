@@ -1,0 +1,38 @@
+<%= render :partial => "admin/events/top_bar", :locals => { :event => @event } %>
+
+<%= grid(@tickets_grid) do |g|
+
+  g.column(name: "#") do |ticket|
+    ticket.id
+  end
+
+  g.column(name: "訂購人姓名") do |ticket|
+    # ticket.name
+  end
+
+  g.column(name: "訂購人 Email") do |ticket|
+   # ticket.email
+  end
+
+  g.column(name: "訂購人電話") do |ticket|
+   # ticket.cell_phone
+  end
+
+  g.column(name: "訂單狀態") do |ticket|
+   # render_ticket_state(ticket)
+  end
+
+  g.column(name: "Options") do |ticket|
+    link_to("檢視訂單", admin_event_ticket_path(@event, ticket.registration), :class => "btn btn-default btn-sm")
+  end
+
+end %>
+
+<%= content_for :admin_special_area_top do  %>
+  <%= render :partial => "admin/events/publish_options", :locals => { :event => @event } %>
+<% end %>
+
+
+<%= content_for :admin_special_area_bottom do  %>
+  <%= render :partial => "admin/events/basic_options", :locals => { :event => @event } %>
+<% end %>

@@ -1,0 +1,106 @@
+
+<div class="alert alert-danger text-center" role="alert">
+     您的票卷已保留，請在 <span id="clock"> </span> 內完成填寫資料並確認訂單。若超過時限，系統將自動取消。
+</div>
+
+
+<h2> <%= @event.name %> </h2>
+
+<br>
+
+<div class="stepwizard">
+    <div class="stepwizard-row">
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default  btn-circle">1</button>
+            <p>選擇票種</p>
+        </div>
+        <div class="stepwizard-step">
+            <button type="button" class="btn  btn-primary  btn-circle" disabled="disabled">2</button>
+            <p>填寫表單</p>
+        </div>
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default btn-circle" disabled="disabled">3</button>
+            <p>進行繳費</p>
+        </div> 
+
+
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default btn-circle" disabled="disabled">4</button>
+            <p>取得票卷</p>
+        </div>         
+    </div>
+</div>
+
+<%= ibutton("重新選票", redo_event_registration_path(@event, @registration.token ), :class => "btn btn-default", :iclass => "fa fa-chevron-left", :method => :post ) %>
+
+<br><br><br>
+
+<%= render :partial => "registrations/registration_summary", :locals => { :registration => @registration} %>
+
+
+
+
+<br>
+
+<br>
+
+<%= simple_form_for [@event, @registration] , :url => event_registration_path(@event, @registration.token) do |f| %>
+
+
+<div class="well">
+
+  <h3> 主要聯絡人 </h3>
+
+  <hr>
+  
+  <div class="clearfix">
+    <div class="col-md-6">
+      <%= f.input :name, :label => "訂購者姓名" %>
+    </div>
+
+  </div>
+
+  <div class="clearfix">
+    <div class="col-md-6">
+      <%= f.input :email, :label => "訂購者 Email" %>
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <div class="col-md-6">
+      <%= f.input :cell_phone, :label => "訂購者 手機" %>
+    </div>
+  </div>
+
+</div>
+
+  <%= f.simple_fields_for :tickets do |builder| %>
+    <%= render "ticket_fields", :f => builder %>
+  <% end %>
+
+   <%= f.submit "Submit", data: { disable_with: "Submitting..." }, :class => "btn btn-primary" %>
+
+<% end %>
+
+<%= content_for :handwrite_js do %>
+
+<script>
+
+expire_link = '<%= expired_event_registration_url(@event,@registration.token) %>'
+var expired_at_unixtime = '<%= @registration.expired_at %>';
+
+ $('#clock').countdown(expired_at_unixtime, {elapse: true})
+ .on('update.countdown', function(event) {
+   var $this = $(this);
+   if (event.elapsed) {
+     window.location.replace(expire_link);
+   } else {
+     $this.html(event.strftime('<span>%H:%M:%S</span>'));
+   }
+ });
+
+</script>
+
+<% end %>
+
+

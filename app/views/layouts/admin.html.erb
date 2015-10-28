@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render_page_title_tag %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="container">
+    <%= render "common/admin_navbar" %>
+
+
+    <div class="row">
+
+
+
+      
+      <div class="col-md-2">
+
+      <%= yield :admin_special_area_top  %>  
+
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+          <%= active_link_to("前台總覽頁面", "/", :active => false , :wrap_tag => :li) %>
+          <% is_in_base = controller.controller_name == "base" %> 
+          <%= active_link_to("綜覽", "/admin", :active => is_in_base , :wrap_tag => :li )%> 
+        </ul>
+
+
+      <%= yield :admin_special_area_bottom  %>          
+      </div>
+
+      <div class="col-md-10">
+        <%= notice_message %>
+        <%= yield %>
+
+      </div>
+ 
+
+
+  </div>
+
+
+  <div class="footer">
+  </div>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= yield :handwrite_js %>
+</body>
+</html>

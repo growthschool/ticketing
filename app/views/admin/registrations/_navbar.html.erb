@@ -1,0 +1,25 @@
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+
+ 
+
+    <%= active_link_to("已付款", admin_event_registrations_path(@event), :active => :exclusive, :wrap_tag => :li) %>
+
+   <%= active_link_to("未付款未過期", not_placed_not_expired_admin_event_registrations_path(@event), :wrap_tag => :li) %>
+
+   <%= active_link_to("未付款已過期", not_placed_expired_admin_event_registrations_path(@event), :wrap_tag => :li) %>
+
+   <%= active_link_to("進行付款未過期", still_can_pay_admin_event_registrations_path(@event), :wrap_tag => :li) %>
+
+   <%= active_link_to("進行付款已過期", cant_pay_admin_event_registrations_path(@event), :wrap_tag => :li) %>
+
+   <%= active_link_to("已取消", already_canceled_admin_event_registrations_path(@event), :wrap_tag => :li) %>
+
+   <%= active_link_to("所有訂單", all_admin_event_registrations_path(@event), :active => :exclusive, :wrap_tag => :li) %>
+
+  </ul>
+
+</div>

@@ -1,0 +1,26 @@
+
+<div class="row nested-fields">
+  <div class="col-md-3">
+    <%= f.input :name, :label => "票種名稱" %>
+  </div>
+
+  <div class="col-md-3">
+    <%= f.input :price , :label => "價格" %>
+  </div>
+
+  <div class="col-md-2">
+    <%= f.input  :amount, :label => "數量" %>
+  </div>
+
+  <div class="col-md-2">
+    <%= f.input :allow_single_purchase_amount, :label => "單次可購數量" %>
+  </div>
+
+  <div class="col-md-1">
+    <%= link_to_remove_association "移除", f %>
+  </div>
+
+
+
+</div>
+

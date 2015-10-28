@@ -1,0 +1,39 @@
+<%= render :partial => "admin/events/top_bar", :locals => { :event => @event } %>
+<%= render :partial => "admin/registrations/navbar" %>
+
+<%= grid(@registration_grid) do |g|
+
+  g.column(name: "#") do |registration|
+    registration.id
+  end
+
+  g.column(name: "訂購人姓名") do |registration|
+    registration.name
+  end
+
+  g.column(name: "訂購人 Email") do |registration|
+    registration.email
+  end
+
+  g.column(name: "訂購人電話") do |registration|
+    registration.cell_phone
+  end
+
+  g.column(name: "訂單狀態") do |registration|
+    render_registration_state(registration)
+  end
+
+  g.column(name: "Options") do |registration|
+    link_to("檢視訂單", admin_event_registration_path(@event, registration), :class => "btn btn-default btn-sm")
+  end
+
+end %>
+
+<%= content_for :admin_special_area_top do  %>
+  <%= render :partial => "admin/events/publish_options", :locals => { :event => @event } %>
+<% end %>
+
+
+<%= content_for :admin_special_area_bottom do  %>
+  <%= render :partial => "admin/events/basic_options", :locals => { :event => @event } %>
+<% end %>

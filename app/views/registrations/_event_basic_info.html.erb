@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><%= @event.name %></div>
+
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item">活動舉辦時間: <%= render_event_hold_time(@event) %></li>
+    <li class="list-group-item">活動地點 <%= render_event_location_info(@event) %> </li>
+  </ul>
+</div>

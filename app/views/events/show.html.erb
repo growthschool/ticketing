@@ -1,0 +1,64 @@
+<div class="row">
+
+
+  <div class="col-md-7">
+    <h2> <%= @event.name %> </h2>
+
+    <div style="height:100px;">
+
+
+      <p>
+        <%= fa_icon "calendar" %> 時間 <%=  render_event_hold_time(@event) %> <br>
+        <%= fa_icon "map-marker" %> <%= render_event_location_info(@event) %> <br>
+        <%= @event.description %>
+      </p>
+      
+    </div>
+
+<h3> 活動票卷 </h3>
+ 
+<br>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th width="">票種</th>
+      <th width="">販售時間</th>
+      <th width="">可售席位</th>
+      <th width="">價格</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @ticket_types.each do |ticket_type| %>
+      <tr>
+        <td>
+          <%= ticket_type.name %>
+        </td>
+        <td>
+          <%= ticket_type.price %>
+        </td>
+
+    <td>
+          <%= ticket_type.available_amount %>
+        </td>
+
+       <td>
+          <%= ticket_type.price %>
+        </td>
+
+      </tr>
+    <% end %>
+
+ 
+
+  </tbody>
+</table>
+
+<center>
+   <%= link_to("立刻報名", new_event_registration_path(@event), :class => "btn btn-primary") %>
+
+</center>
+
+  </div>
+</div>

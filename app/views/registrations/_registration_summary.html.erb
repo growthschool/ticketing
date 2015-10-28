@@ -1,0 +1,30 @@
+<table class="table table-bordered">
+
+  <thead>
+    <tr>
+      <th width="">票種</th>
+      <th width="200">小計</th>
+
+    </tr>
+  </thead>
+<tbody>
+
+</tbody>
+
+<% @registration.tickets.group_by(&:ticket_type).each do |ticket_type, detail| %>
+
+  <tr>
+    <td> <%= ticket_type.name %> <%= ticket_type.price %> x  <%= detail.size %> </td>
+    <td>  <%= ticket_type.price * detail.size %> </td>
+  </tr>
+
+  
+<% end %>
+
+
+   <tr>
+      <td>總計</td>
+      <td><%= @registration.total_price %> </td>
+    </tr>
+
+</table>

@@ -1,0 +1,40 @@
+<%= render :partial => "admin/events/top_bar", :locals => { :event => @event } %>
+
+<h3> 設定活動資料 </h3>
+
+<%= simple_form_for [:admin, @event]  do |f| %>
+
+  <div class="group">
+    <%= f.input :name %>
+  </div>
+
+  <div class="group">
+    <%= f.input :description %>
+  </div>
+
+  <div class="group">
+    <%= f.input :seat_quantity, :label => "總席位" %>
+  </div>
+
+  <div class="group">
+    <%= f.input :location_name, :label => "活動地點名稱" %>
+  </div>
+
+
+  <div class="group">
+    <%= f.input :location_address, :label => "活動地址" %>
+  </div>
+
+
+  <%= f.submit "Submit", data: { disable_with: "Submitting..." } %>
+
+<% end %>
+
+<%= content_for :admin_special_area_top do  %>
+  <%= render :partial => "admin/events/publish_options", :locals => { :event => @event } %>
+<% end %>
+
+
+<%= content_for :admin_special_area_bottom do  %>
+  <%= render :partial => "admin/events/basic_options", :locals => { :event => @event } %>
+<% end %>

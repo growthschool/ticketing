@@ -1,0 +1,38 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>活動名稱</th>
+      <th>活動時間 </th>
+     <th>總開放數量</th> 
+     <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @events.each do |event| %>
+      <tr>
+        <td>
+          <%= event.id %>
+        </td>
+        <td>
+          <%= link_to(event.name, event_path(event)) %>
+        </td>
+
+        <td>
+          活動時間 <%=  render_event_hold_time(event) %>
+        </td>
+
+        <td>
+          <%= event.available_seat %>  / <%= event.seat_quantity %>
+        </td>
+
+   
+        <td>
+          <%= link_to("前往報名", event_path(event)) %>
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>

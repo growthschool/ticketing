@@ -1,0 +1,50 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>活動名稱</th>
+
+      <th>活動開始時間 </th>
+      <th>狀態 </th>
+      <th>報名人數 </th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @events.each do |event| %>
+      <tr>
+        <td>
+          <%= event.id %>
+        </td>
+        <td>
+          <%= event.name %>
+
+          <br><br>
+<div class="btn-group btn-group-sn" role="group" aria-label="Large button group">
+  <%= ibutton("活動主控台", admin_event_path(event), :class => "btn btn-default btn-sm", :iclass => "fa fa-compass") %>
+            <%= ibutton("訂單", admin_event_registrations_path(event), :class => "btn  btn-default btn-sm") %>
+            <%= ibutton("活動頁面", event_path(event), :class => "btn  btn-default  btn-sm", :target => "_blank", :iclass => "fa fa-external-link") %>
+    </div>
+      
+        </td>
+
+        <td>
+          活動時間 <%=  render_event_hold_time(event) %>
+        </td>
+
+        <td>
+          <%= render_event_publish_state(event) %>
+        </td>
+
+        <td>
+          <%= event.paid_tickets_count %> / <%= event.available_seat %>
+         
+        </td>
+
+
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>

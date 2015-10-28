@@ -1,0 +1,26 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  quantity: 1
+  price: 1
+
+two:
+  title: MyString
+  description: MyText
+  quantity: 1
+  price: 1
+
+# == Schema Information
+#
+# Table name: products
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  description :text
+#  quantity    :integer
+#  price       :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#

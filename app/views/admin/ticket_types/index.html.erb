@@ -1,0 +1,72 @@
+<%= render :partial => "admin/events/top_bar", :locals => { :event => @event } %>
+
+<div class="clearfix">
+
+<h3>票種資訊</h3>
+
+<div class="pull-right btn-group" style="padding-bottom: 20px;">
+  <%= link_to("新增票種", new_admin_event_ticket_type_path(@event) , :class => "btn btn-default btn-primary btn-sm") %>
+</div>
+
+
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th >票種</th>
+      <th >販售時間</th>
+      <th >狀態</th>
+      <th >價格</th>
+      <th >數量</th>
+      <th >單次可購</th> 
+
+      <th width="100"> Options</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @ticket_types.each do |ticket_type| %>
+      <tr>
+        <td>
+          <%= ticket_type.name %>
+        </td>
+
+        <td>
+          販售時間 TBD
+        </td>
+        <td>
+          狀態 TBD
+        </td>
+        <td>
+          <%= ticket_type.price %>
+        </td>
+
+        <td>
+          <%= ticket_type.amount %>
+        </td>
+        <td>
+          <%= ticket_type.allow_single_purchase_amount %>
+        </td>
+
+  
+
+ 
+        <td>
+          <%= link_to("編輯", edit_admin_event_ticket_type_path(@event,ticket_type), :class => "btn btn-default btn-sm") %>
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+
+<%= content_for :admin_special_area_top do  %>
+  <%= render :partial => "admin/events/publish_options", :locals => { :event => @event } %>
+<% end %>
+
+
+<%= content_for :admin_special_area_bottom do  %>
+  <%= render :partial => "admin/events/basic_options", :locals => { :event => @event } %>
+<% end %>
