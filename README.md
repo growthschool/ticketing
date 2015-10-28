@@ -1,7 +1,7 @@
 
 ## Ticketing
 
-This project want to help people whio want build a ticketing system to sell their own courses.
+This project want to help people who want build a ticketing system to sell their own courses.
 
 
 ## Style Guides
