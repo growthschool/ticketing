@@ -45,8 +45,16 @@ rake dev:build
 
 ## Contributing
 
-Fork it ( https://github.com/growthschool/ticketing/fork )
-Create your feature branch (git checkout -b my-new-feature)
-Commit your changes (git commit -am 'Add some feature')
-Push to the branch (git push origin my-new-feature)
-Create a new Pull Request
+* Fork it ( https://github.com/growthschool/ticketing/fork )
+* Create your feature branch (git checkout -b my-new-feature)
+* Commit your changes (git commit -am 'Add some feature')
+* Push to the branch (git push origin my-new-feature)
+* Create a new Pull Request
+
+## Learning Rails
+
+If you want to learn Rails, you can enroll following courses:
+
+* [RailsBridge](http://zh-tw.railsbridge.org/docs/)
+* [Rails101](http://courses.growthschool.com/courses/rails-101)
+* [Rails x EC](http://www.growthschool.com/courses/rails_ecommerce)
