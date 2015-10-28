@@ -8,4 +8,4 @@
 * Widget for embedding
 * 多自訂欄位，希望使用 typeform
 * 票種隱藏功能
-* 後台 Event 敘述編輯器功能
+* 後台 Event 敘述編輯器功能 ( 使用 Markdown )
